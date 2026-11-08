@@ -1,0 +1,33 @@
+{
+  "name": "azhiim-virtual-office",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Azhiim Virtual Office — a pixel-art command center for real AI agents.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:api dev:web",
+    "dev:api": "npm run dev -w @avo/api",
+    "dev:web": "npm run dev -w @avo/web",
+    "build": "npm run build -w @avo/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "npm run test:e2e -w @avo/web",
+    "db:migrate": "npm run db:migrate -w @avo/api",
+    "db:seed": "npm run db:seed -w @avo/api",
+    "assets": "npm run assets -w @avo/web"
+  },
+  "devDependencies": {
+    "npm-run-all2": "^9.0.4",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

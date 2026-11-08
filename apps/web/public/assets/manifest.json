@@ -1,0 +1,3700 @@
+{
+ "tile": 16,
+ "character": {
+  "w": 16,
+  "h": 24
+ },
+ "ship": "ship.png",
+ "lights": 146,
+ "characters": {
+  "character-leadership-0.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-leadership-1.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-leadership-2.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-operations-0.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-operations-1.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-operations-2.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-engineering-0.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-engineering-1.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-engineering-2.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-research-0.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-research-1.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-research-2.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-infrastructure-0.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-infrastructure-1.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  },
+  "character-infrastructure-2.png": {
+   "cols": 12,
+   "cells": [
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "down",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "down",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "up",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "up",
+     "f": 1
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "idle",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 2
+    },
+    {
+     "pose": "walk",
+     "dir": "side",
+     "f": 3
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "working",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "thinking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "talking",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "meeting",
+     "dir": "side",
+     "f": 1
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 0
+    },
+    {
+     "pose": "resting",
+     "dir": "side",
+     "f": 1
+    }
+   ]
+  }
+ },
+ "icons": [
+  "waiting",
+  "blocked",
+  "paused",
+  "error",
+  "offline",
+  "unknown",
+  "starting",
+  "stopping",
+  "think",
+  "talk",
+  "zzz",
+  "meet"
+ ]
+}

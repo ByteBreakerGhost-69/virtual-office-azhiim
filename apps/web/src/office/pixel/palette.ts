@@ -1,0 +1,51 @@
+import { type Color } from './buffer.js';
+
+/** One shared palette so characters, rooms and furniture look like one world. Warm white/gray/blue with cyan accents. */
+export const P = {
+  ink: 0x141b2d, // outlines
+  inkSoft: 0x232c45,
+  white: 0xf4f6fa,
+  paper: 0xe7ebf2,
+  gray1: 0xd3d9e4,
+  gray2: 0xaab3c4,
+  gray3: 0x7c879e,
+  gray4: 0x55607a,
+  gray5: 0x3a4460,
+  gray6: 0x262d47,
+  blue1: 0xcfe3ff,
+  blue2: 0x8fbdf5,
+  blue3: 0x4a8fe0,
+  blue4: 0x2c5fa8,
+  blue5: 0x1c3a73,
+  cyan1: 0xb9f6ff,
+  cyan2: 0x57e0f0,
+  cyan3: 0x1fb4cc,
+  cyan4: 0x0e7f99,
+  warm1: 0xfff3dc,
+  warm2: 0xf2d9ad,
+  warm3: 0xd9b27a,
+  warm4: 0xa67c4d,
+  warm5: 0x6e4f33,
+  wood1: 0xe0b985,
+  wood2: 0xc4945f,
+  wood3: 0x9a6c40,
+  wood4: 0x6f4a2b,
+  green1: 0xb5f0c8,
+  green2: 0x5fd38d,
+  green3: 0x2f9e62,
+  green4: 0x1d6b44,
+  red1: 0xffb8b0,
+  red2: 0xf06a5f,
+  red3: 0xb83a34,
+  amber1: 0xffe3a0,
+  amber2: 0xf2b84b,
+  amber3: 0xb8812a,
+  purple1: 0xd8cbff,
+  purple2: 0x9b7bff,
+  purple3: 0x6446c9,
+  space1: 0x0a1024,
+  space2: 0x121b3a,
+} as const satisfies Record<string, Color>;
+
+export const SKIN_TONES: Color[] = [0xffe0c8, 0xf6c9a6, 0xe0a47c, 0xc58559, 0x9a6540, 0x6b432a];
+export const HAIR_COLORS: Color[] = [0x2a1f1a, 0x4a3224, 0x7a4a2a, 0xb07a3c, 0xd9b45a, 0x8a8f9c, 0x3a3f8f, 0xb23a6b, 0x1f7a6e];

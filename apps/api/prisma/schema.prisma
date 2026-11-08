@@ -1,0 +1,504 @@
+// Azhiim Virtual Office — database schema.
+// Every business table carries `workspaceId`; every query in apps/api is scoped by it.
+// Ids are UUIDs generated client-side (no database default).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  OWNER
+  OPERATOR
+  OBSERVER
+}
+
+enum RuntimeKind {
+  HERMES
+  OPENCLAW
+  INTERNAL
+  SIMULATED
+}
+
+enum DataMode {
+  REAL
+  SIMULATED
+}
+
+enum AgentState {
+  registered
+  starting
+  idle
+  working
+  thinking
+  waiting
+  blocked
+  paused
+  stopping
+  stopped
+  error
+  offline
+  unknown
+}
+
+enum TaskStatus {
+  created
+  awaiting_assignment
+  assigned
+  running
+  awaiting_approval
+  blocked
+  completed
+  failed
+  cancelled
+}
+
+enum RunState {
+  created
+  planning
+  awaiting_approval
+  queued
+  running
+  verifying
+  completed
+  rejected
+  blocked
+  failed
+  cancelled
+  timed_out
+}
+
+enum Priority {
+  low
+  normal
+  high
+  urgent
+}
+
+enum ApprovalStatus {
+  pending
+  approved
+  rejected
+  expired
+}
+
+enum ApprovalGate {
+  pre_run
+  runtime
+}
+
+enum RiskLevel {
+  low
+  medium
+  high
+  critical
+}
+
+enum Severity {
+  debug
+  info
+  warn
+  error
+  critical
+}
+
+enum OrgRole {
+  leader
+  manager
+  specialist
+  assistant
+}
+
+enum IntegrationStatus {
+  unchecked
+  connected
+  degraded
+  disconnected
+}
+
+enum MemoryScope {
+  user
+  agent
+  department
+  project
+  workspace
+}
+
+enum ProjectStatus {
+  active
+  archived
+}
+
+model User {
+  id           String            @id
+  username     String            @unique
+  displayName  String
+  passwordHash String
+  locale       String            @default("id")
+  disabled     Boolean           @default(false)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  sessions     Session[]
+  memberships  WorkspaceMember[]
+  tasksCreated Task[]
+}
+
+model Workspace {
+  id           String            @id
+  name         String
+  slug         String            @unique
+  createdAt    DateTime          @default(now())
+  members      WorkspaceMember[]
+  sessions     Session[]
+  departments  Department[]
+  integrations Integration[]
+  agents       Agent[]
+  projects     Project[]
+  tasks        Task[]
+  runs         Run[]
+  approvals    Approval[]
+  messages     Message[]
+  events       ActivityEvent[]
+  memories     MemoryRecord[]
+  settings     Setting[]
+}
+
+model WorkspaceMember {
+  id          String    @id
+  workspaceId String
+  userId      String
+  role        UserRole
+  createdAt   DateTime  @default(now())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+  @@index([userId])
+}
+
+model Session {
+  id          String    @id
+  userId      String
+  workspaceId String
+  tokenHash   String    @unique
+  expiresAt   DateTime
+  createdAt   DateTime  @default(now())
+  lastUsedAt  DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Department {
+  id          String    @id
+  workspaceId String
+  key         String
+  name        String
+  color       String
+  homeRoom    String
+  createdAt   DateTime  @default(now())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  agents      Agent[]
+
+  @@unique([workspaceId, key])
+}
+
+model Integration {
+  id              String            @id
+  workspaceId     String
+  kind            RuntimeKind
+  mode            DataMode
+  name            String
+  baseUrl         String?
+  /// AES-256-GCM envelope (v1.iv.tag.ciphertext). Never returned by the API.
+  encryptedSecret String?
+  status          IntegrationStatus @default(unchecked)
+  lastCheckedAt   DateTime?
+  lastSuccessAt   DateTime?
+  lastError       String?
+  capabilities    String[]          @default([])
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  workspace       Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  agents          Agent[]
+
+  @@index([workspaceId])
+}
+
+model Agent {
+  id               String      @id
+  workspaceId      String
+  integrationId    String
+  mode             DataMode
+  name             String
+  handle           String
+  title            String
+  departmentId     String?
+  orgRole          OrgRole     @default(specialist)
+  reportsToAgentId String?
+  /// Provider-side identifier (e.g. a Hermes profile). Not interchangeable with `id`.
+  runtimeRef       String?
+  enabled          Boolean     @default(true)
+  /// What the runtime last reported. The API shows an *effective* state derived from this.
+  storedState      AgentState  @default(registered)
+  stateSince       DateTime?
+  stateSource      String      @default("system")
+  lastSeenAt       DateTime?
+  activityNote     String?
+  currentTaskId    String?
+  capabilities     String[]    @default([])
+  permissions      String[]    @default([])
+  appearanceSeed   String
+  homeRoom         String
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  workspace        Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  integration      Integration @relation(fields: [integrationId], references: [id], onDelete: Restrict)
+  department       Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  reportsTo        Agent?      @relation("AgentReports", fields: [reportsToAgentId], references: [id], onDelete: SetNull)
+  reports          Agent[]     @relation("AgentReports")
+  currentTask      Task?       @relation("AgentCurrentTask", fields: [currentTaskId], references: [id], onDelete: SetNull)
+  assignedTasks    Task[]      @relation("TaskAssignee")
+  runs             Run[]
+  approvals        Approval[]
+
+  @@unique([workspaceId, handle])
+  @@index([workspaceId, mode])
+  @@index([integrationId])
+}
+
+model Project {
+  id          String        @id
+  workspaceId String
+  name        String
+  description String?
+  status      ProjectStatus @default(active)
+  createdAt   DateTime      @default(now())
+  workspace   Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  tasks       Task[]
+
+  @@index([workspaceId])
+}
+
+model Task {
+  id                   String           @id
+  workspaceId          String
+  projectId            String?
+  title                String
+  objective            String
+  expectedOutput       String?
+  priority             Priority         @default(normal)
+  status               TaskStatus       @default(created)
+  mode                 DataMode         @default(REAL)
+  assigneeAgentId      String?
+  createdById          String?
+  dueAt                DateTime?
+  blockedReason        String?
+  requiresApproval     Boolean          @default(false)
+  requiredCapabilities String[]         @default([])
+  currentRunId         String?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+  workspace            Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  project              Project?         @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  assignee             Agent?           @relation("TaskAssignee", fields: [assigneeAgentId], references: [id], onDelete: SetNull)
+  createdBy            User?            @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  currentFor           Agent[]          @relation("AgentCurrentTask")
+  dependencies         TaskDependency[] @relation("TaskDependent")
+  dependents           TaskDependency[] @relation("TaskDependsOn")
+  runs                 Run[]
+
+  @@index([workspaceId, status])
+  @@index([workspaceId, mode])
+  @@index([assigneeAgentId])
+  @@index([projectId])
+}
+
+model TaskDependency {
+  taskId      String
+  dependsOnId String
+  task        Task   @relation("TaskDependent", fields: [taskId], references: [id], onDelete: Cascade)
+  dependsOn   Task   @relation("TaskDependsOn", fields: [dependsOnId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, dependsOnId])
+  @@index([dependsOnId])
+}
+
+model Run {
+  id             String               @id
+  workspaceId    String
+  taskId         String
+  agentId        String
+  mode           DataMode
+  state          RunState             @default(created)
+  attempt        Int                  @default(1)
+  planVersion    Int                  @default(0)
+  planJson       Json?
+  traceId        String
+  providerRunId  String?
+  /// `${runId}:${attempt}` — retried dispatches cannot start the same work twice.
+  idempotencyKey String               @unique
+  startedAt      DateTime?
+  finishedAt     DateTime?
+  deadlineAt     DateTime?
+  failureReason  String?
+  resultSummary  String?
+  outputs        Json
+  usage          Json?
+  leaseOwner     String?
+  leaseUntil     DateTime?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  workspace      Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  task           Task                 @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  agent          Agent                @relation(fields: [agentId], references: [id], onDelete: Restrict)
+  transitions    RunStateTransition[]
+  approvals      Approval[]
+
+  @@index([workspaceId, state])
+  @@index([taskId])
+  @@index([agentId, state])
+  @@index([traceId])
+}
+
+model RunStateTransition {
+  id        String    @id
+  runId     String
+  fromState RunState?
+  toState   RunState
+  reason    String?
+  traceId   String
+  at        DateTime  @default(now())
+  run       Run       @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId, at])
+}
+
+model Approval {
+  id                 String         @id
+  workspaceId        String
+  runId              String?
+  taskId             String?
+  agentId            String
+  gate               ApprovalGate   @default(runtime)
+  status             ApprovalStatus @default(pending)
+  mode               DataMode
+  actionCategory     String
+  target             String
+  argsSummary        String
+  /// SHA-256 of the canonical JSON of the exact action payload. A decision is only valid for this hash.
+  payloadHash        String
+  risk               RiskLevel
+  consequence        String
+  requestedAt        DateTime       @default(now())
+  expiresAt          DateTime
+  decidedAt          DateTime?
+  decidedById        String?
+  reason             String?
+  /// { requestRef, payload } as received from the runtime (needed to answer the request).
+  providerRequestRef Json?
+  workspace          Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  run                Run?           @relation(fields: [runId], references: [id], onDelete: Cascade)
+  agent              Agent          @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId, status])
+  @@index([runId])
+}
+
+model Message {
+  id            String    @id
+  workspaceId   String
+  taskId        String?
+  runId         String?
+  fromKind      String
+  fromId        String?
+  fromName      String
+  toKind        String
+  toId          String?
+  channel       String
+  body          String
+  correlationId String?
+  mode          DataMode
+  createdAt     DateTime  @default(now())
+  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId, createdAt])
+  @@index([taskId])
+  @@index([runId])
+}
+
+/// Append-only DomainEvent store. References are plain ids (no FKs) so history survives deletions.
+model ActivityEvent {
+  id            String    @id
+  workspaceId   String
+  type          String
+  schemaVersion Int       @default(1)
+  occurredAt    DateTime
+  sourceKind    String
+  sourceRef     String?
+  mode          DataMode
+  agentId       String?
+  taskId        String?
+  runId         String?
+  integrationId String?
+  traceId       String
+  correlationId String?
+  severity      Severity
+  messageKey    String
+  params        Json
+  summary       String
+  payload       Json
+  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId, occurredAt])
+  @@index([workspaceId, agentId])
+  @@index([workspaceId, taskId])
+}
+
+model AuditLog {
+  id          String   @id
+  workspaceId String?
+  actorUserId String?
+  action      String
+  entity      String?
+  entityId    String?
+  traceId     String?
+  ip          String?
+  details     Json
+  createdAt   DateTime @default(now())
+
+  @@index([workspaceId, createdAt])
+  @@index([action])
+}
+
+model MemoryRecord {
+  id             String      @id
+  workspaceId    String
+  scope          MemoryScope
+  scopeRefId     String?
+  content        String
+  /// Provenance: who/what produced this record (e.g. "user:<id>", "agent:<id>").
+  source         String
+  ownerId        String?
+  retentionUntil DateTime?
+  createdAt      DateTime    @default(now())
+  workspace      Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId, scope])
+}
+
+model Setting {
+  workspaceId String
+  key         String
+  value       Json
+  updatedAt   DateTime  @updatedAt
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@id([workspaceId, key])
+}
