@@ -6,8 +6,7 @@ import { newId, parse } from '../../lib/util.js';
 import { approvalDTO, messageDTO, runDTO, taskDTO } from '../../dto/mappers.js';
 import { rowToEvent } from '../../events/event-service.js';
 import type { Guard } from '../auth/guard.js';
-
-const TASK_INCLUDE = { project: { select: { name: true } }, assignee: { select: { name: true } }, createdBy: { select: { displayName: true } }, dependencies: { select: { dependsOnId: true } } } as const;
+import { TaskService, TASK_INCLUDE } from './task-service.js';
 
 export function registerTaskRoutes(app: FastifyInstance, ctx: () => AppContext, guard: Guard): void {
   const ws = (req: { auth?: { workspaceId: string } }) => req.auth!.workspaceId;
@@ -45,41 +44,14 @@ export function registerTaskRoutes(app: FastifyInstance, ctx: () => AppContext, 
     };
   });
 
-  const validateLinks = async (workspaceId: string, b: { assigneeAgentId?: string | null | undefined; projectId?: string | null | undefined; dependsOn?: string[] | undefined }) => {
-    const c = ctx();
-    let mode: DataMode | null = null;
-    if (b.assigneeAgentId) {
-      const a = await c.db.agent.findFirst({ where: { id: b.assigneeAgentId, workspaceId } });
-      if (!a) throw notFound('Assignee agent');
-      if (!a.enabled) throw conflict('The assignee is disabled');
-      mode = a.mode;
-    }
-    if (b.projectId && !(await c.db.project.findFirst({ where: { id: b.projectId, workspaceId } }))) throw notFound('Project');
-    if (b.dependsOn?.length) {
-      const deps = await c.db.task.findMany({ where: { id: { in: b.dependsOn }, workspaceId } });
-      if (deps.length !== new Set(b.dependsOn).size) throw notFound('Dependency task');
-      if (mode && deps.some((d) => d.assigneeAgentId && d.mode !== mode)) throw conflict('REAL and SIMULATED tasks cannot depend on each other');
-    }
-    return mode;
-  };
+  const tasks = () => new TaskService(ctx);
+  const validateLinks = (workspaceId: string, b: Parameters<TaskService['validateLinks']>[1]) => tasks().validateLinks(workspaceId, b);
 
   app.post('/tasks', { preHandler: guard('task.create') }, async (req, reply) => {
-    const c = ctx();
     const b = parse(CreateTaskBodySchema, req.body);
-    const mode = await validateLinks(ws(req), b);
-    const id = newId();
-    await c.db.task.create({
-      data: {
-        id, workspaceId: ws(req), title: b.title, objective: b.objective, expectedOutput: b.expectedOutput ?? null, priority: b.priority, status: b.assigneeAgentId ? 'assigned' : 'awaiting_assignment',
-        mode: mode ?? 'REAL', assigneeAgentId: b.assigneeAgentId ?? null, projectId: b.projectId ?? null, createdById: req.auth!.userId, dueAt: b.dueAt ? new Date(b.dueAt) : null,
-        requiresApproval: b.requiresApproval, requiredCapabilities: b.requiredCapabilities,
-        dependencies: { create: b.dependsOn.map((d) => ({ dependsOnId: d })) },
-      },
-    });
-    await c.events.emit({ workspaceId: ws(req), type: 'task.created', source: { kind: 'user', ref: req.auth!.userId }, mode: mode ?? 'REAL', taskId: id, agentId: b.assigneeAgentId ?? null, params: { task: b.title }, summary: `Task "${b.title}" created` });
-    if (b.assigneeAgentId) await c.orchestrator.startRun(ws(req), id);
+    const task = await tasks().create(ws(req), req.auth!.userId, b, { kind: 'user', ref: req.auth!.userId });
     reply.code(201);
-    return taskDTO((await c.db.task.findUniqueOrThrow({ where: { id }, include: TASK_INCLUDE })));
+    return task;
   });
 
   app.patch('/tasks/:id', { preHandler: guard('task.create') }, async (req) => {
@@ -102,16 +74,8 @@ export function registerTaskRoutes(app: FastifyInstance, ctx: () => AppContext, 
   });
 
   app.post('/tasks/:id/assign', { preHandler: guard('task.create') }, async (req) => {
-    const c = ctx();
-    const id = idOf(req);
     const b = parse(AssignTaskBodySchema, req.body);
-    const t = await c.db.task.findFirst({ where: { id, workspaceId: ws(req) } });
-    if (!t) throw notFound('Task');
-    if (['running', 'awaiting_approval', 'completed'].includes(t.status)) throw conflict(`Task is ${t.status}`);
-    const mode = await validateLinks(ws(req), { assigneeAgentId: b.agentId });
-    await c.db.task.update({ where: { id }, data: { assigneeAgentId: b.agentId, mode: mode ?? t.mode } });
-    await c.orchestrator.startRun(ws(req), id);
-    return taskDTO(await c.db.task.findUniqueOrThrow({ where: { id }, include: TASK_INCLUDE }));
+    return tasks().assign(ws(req), idOf(req), b.agentId);
   });
 
   app.post('/tasks/:id/cancel', { preHandler: guard('task.cancel') }, async (req) => {

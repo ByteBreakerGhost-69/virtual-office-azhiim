@@ -85,6 +85,10 @@ export class AgentService {
       capabilities: row.capabilities,
       permissions: row.permissions,
       appearanceSeed: row.appearanceSeed,
+      employeeCode: row.employeeCode,
+      employmentStatus: row.employmentStatus,
+      avatarId: row.avatarId,
+      responsibilities: row.responsibilities,
       homeRoom: row.homeRoom as RoomKey,
       placement,
       activityNote: row.activityNote,
@@ -103,7 +107,7 @@ export class AgentService {
   }
 
   private signature(d: AgentDTO): string {
-    return [d.state, d.stale, d.placement.room, d.placement.pose, d.placement.overlay, d.activityNote, d.currentTaskId, d.enabled, d.integrationStatus, d.departmentId, d.orgRole, d.name, d.title, d.reportsToAgentId, d.placement.reason.code, d.capabilities.join(','), d.permissions.join(',')].join('|');
+    return [d.state, d.stale, d.placement.room, d.placement.pose, d.placement.overlay, d.activityNote, d.currentTaskId, d.enabled, d.integrationStatus, d.departmentId, d.orgRole, d.name, d.title, d.reportsToAgentId, d.placement.reason.code, d.capabilities.join(','), d.permissions.join(','), d.employeeCode, d.employmentStatus, d.avatarId].join('|');
   }
 
   /** Recompute one agent; broadcast if anything visible changed; record state transitions as events. */

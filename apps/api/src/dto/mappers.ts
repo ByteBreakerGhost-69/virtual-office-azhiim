@@ -37,6 +37,7 @@ export type TaskRow = Task & {
 export function taskDTO(t: TaskRow): TaskDTO {
   return {
     id: t.id,
+    code: t.taskNumber ? `TASK-${String(t.taskNumber).padStart(3, '0')}` : null,
     title: t.title,
     objective: t.objective,
     expectedOutput: t.expectedOutput,

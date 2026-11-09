@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  EmploymentStatusSchema,
   AgentStateSchema,
   ApprovalStatusSchema,
   DataModeSchema,
@@ -108,6 +109,11 @@ export const AgentDTOSchema = z.object({
   capabilities: z.array(z.string()),
   permissions: z.array(z.string()),
   appearanceSeed: z.string(),
+  /** Company identity layer. `employeeCode` null = a runtime agent that is not yet an employee. */
+  employeeCode: z.string().nullable(),
+  employmentStatus: EmploymentStatusSchema.nullable(),
+  avatarId: z.string().nullable(),
+  responsibilities: z.array(z.string()),
   homeRoom: RoomKeySchema,
   placement: PlacementSchema,
   /** Latest human-readable activity line coming from the runtime (e.g. "tool: web.search"). */
@@ -182,6 +188,8 @@ export type MessageDTO = z.infer<typeof MessageDTOSchema>;
 
 export const TaskDTOSchema = z.object({
   id: z.string(),
+  /** Human-friendly reference (TASK-001); null only for rows that predate numbering. */
+  code: z.string().nullable(),
   title: z.string(),
   objective: z.string(),
   expectedOutput: z.string().nullable(),

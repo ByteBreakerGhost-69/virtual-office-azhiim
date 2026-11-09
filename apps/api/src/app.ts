@@ -22,6 +22,8 @@ import { registerMiscRoutes } from './modules/misc/routes.js';
 import { SettingsService } from './modules/settings/settings-service.js';
 import { SimulationService } from './modules/simulation/simulation-service.js';
 import { registerTaskRoutes } from './modules/tasks/routes.js';
+import { registerTerminalRoutes } from './modules/terminal/routes.js';
+import { registerEmployeeRoutes } from './modules/employees/routes.js';
 import { Orchestrator } from './orchestrator/orchestrator.js';
 import { Hub } from './realtime/hub.js';
 import { AdapterManager, type AdapterFactory } from './runtime/adapter-manager.js';
@@ -98,6 +100,8 @@ export async function buildApp(opts: BuildOptions): Promise<BuiltApp> {
       registerAgentRoutes(api, getCtx, guard);
       registerIntegrationRoutes(api, getCtx, guard);
       registerTaskRoutes(api, getCtx, guard);
+      registerTerminalRoutes(api, getCtx, guard);
+      registerEmployeeRoutes(api, getCtx, guard);
       registerMiscRoutes(api, getCtx, guard, sim);
 
       api.get('/ws', { websocket: true }, async (socket, req) => {

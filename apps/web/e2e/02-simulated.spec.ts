@@ -59,7 +59,6 @@ test('office renders (WebGL canvas), selecting a character opens its panel, WASD
   const first = page.locator('[data-testid^="office-agent-"]').first();
   await first.dispatchEvent('click');
   await expect(page.getByTestId('agent-panel')).toBeVisible();
-  await page.getByTestId('toggle-avatar').check();
   await page.keyboard.press('d');
   await page.getByTestId('toggle-table').click();
   await expect(page.getByTestId('office-table')).toBeVisible();

@@ -136,3 +136,12 @@ export const ACTION_CATEGORIES = [
 ] as const;
 export type ActionCategory = (typeof ACTION_CATEGORIES)[number];
 export const ActionCategorySchema = z.enum(ACTION_CATEGORIES);
+
+/** Company employment lifecycle (PRD employee-management 7.2). `null` on an agent = not hired as an employee. */
+export const EMPLOYMENT_STATUSES = ['PENDING_ONBOARDING', 'ACTIVE', 'SUSPENDED', 'OFFBOARDING', 'ARCHIVED'] as const;
+export type EmploymentStatus = (typeof EMPLOYMENT_STATUSES)[number];
+export const EmploymentStatusSchema = z.enum(EMPLOYMENT_STATUSES);
+
+/** Preset avatars (deterministic procedural looks). Selecting one overrides the seed-derived look. */
+export const AVATAR_IDS = ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'] as const;
+export type AvatarId = (typeof AVATAR_IDS)[number];

@@ -12,3 +12,6 @@
 | 8 | Compare-and-set run transitions with bounded retry | a late runtime outcome must not be lost to a concurrent approval resume |
 | 9 | Existing repository content ignored | owner instruction ("treat as empty") |
 | 10 | Not pushed to GitHub | owner wants to review the ZIP first |
+
+## Virtual Company evolution (Milestone 1)
+See docs/virtual-company/audit-and-status.md for the audit, assumptions and per-criterion evidence.

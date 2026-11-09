@@ -106,6 +106,14 @@ enum Severity {
   critical
 }
 
+enum EmploymentStatus {
+  PENDING_ONBOARDING
+  ACTIVE
+  SUSPENDED
+  OFFBOARDING
+  ARCHIVED
+}
+
 enum OrgRole {
   leader
   manager
@@ -145,6 +153,8 @@ model User {
   sessions     Session[]
   memberships  WorkspaceMember[]
   tasksCreated Task[]
+  positions    CharacterPosition[]
+  commands     CommandExecution[]
 }
 
 model Workspace {
@@ -165,6 +175,9 @@ model Workspace {
   events       ActivityEvent[]
   memories     MemoryRecord[]
   settings     Setting[]
+  counters     Counter[]
+  positions    CharacterPosition[]
+  commands     CommandExecution[]
 }
 
 model WorkspaceMember {
@@ -256,6 +269,11 @@ model Agent {
   permissions      String[]    @default([])
   appearanceSeed   String
   homeRoom         String
+  /// Company identity layer (v0.2). `employeeCode` null = a runtime agent that has not been hired as an employee.
+  employeeCode     String?
+  employmentStatus EmploymentStatus?
+  avatarId         String?
+  responsibilities String[]    @default([])
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @updatedAt
   workspace        Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
@@ -269,6 +287,7 @@ model Agent {
   approvals        Approval[]
 
   @@unique([workspaceId, handle])
+  @@unique([workspaceId, employeeCode])
   @@index([workspaceId, mode])
   @@index([integrationId])
 }
@@ -303,6 +322,8 @@ model Task {
   requiresApproval     Boolean          @default(false)
   requiredCapabilities String[]         @default([])
   currentRunId         String?
+  /// Human-friendly sequence (TASK-001) allocated per workspace from `Counter`.
+  taskNumber           Int?
   createdAt            DateTime         @default(now())
   updatedAt            DateTime         @updatedAt
   workspace            Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
@@ -314,6 +335,7 @@ model Task {
   dependents           TaskDependency[] @relation("TaskDependsOn")
   runs                 Run[]
 
+  @@unique([workspaceId, taskNumber])
   @@index([workspaceId, status])
   @@index([workspaceId, mode])
   @@index([assigneeAgentId])
@@ -501,4 +523,49 @@ model Setting {
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 
   @@id([workspaceId, key])
+}
+
+/// Per-workspace atomic sequences (EMP-001, TASK-001). Incremented with `UPDATE ... SET value = value + 1`.
+model Counter {
+  workspaceId String
+  key         String
+  value       Int       @default(0)
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@id([workspaceId, key])
+}
+
+/// Last *resting* position of the Owner avatar (checkpoint on stop / room change, never per frame).
+model CharacterPosition {
+  id          String    @id
+  workspaceId String
+  userId      String
+  room        String
+  x           Int
+  y           Int
+  direction   String
+  updatedAt   DateTime  @updatedAt
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+}
+
+/// Every Company Terminal submission (including rejected ones). Secrets are redacted before storage.
+model CommandExecution {
+  id          String    @id
+  workspaceId String
+  userId      String?
+  input       String
+  command     String?
+  status      String
+  message     String
+  durationMs  Int       @default(0)
+  auditId     String?
+  traceId     String
+  createdAt   DateTime  @default(now())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user        User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([workspaceId, userId, createdAt])
 }

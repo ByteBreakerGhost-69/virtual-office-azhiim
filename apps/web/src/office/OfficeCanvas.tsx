@@ -13,8 +13,8 @@ export function OfficeCanvas(props: OfficeCanvasProps) {
   const { agents, selectedAgentId, onSelectAgent, filter, labels, reducedMotion, avatarEnabled, live, onSfx, className } = props;
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<OfficeScene | null>(null);
-  const cbRef = useRef({ onSelectAgent, onSfx });
-  cbRef.current = { onSelectAgent, onSfx };
+  const cbRef = useRef({ onSelectAgent, onSfx, onAvatarRest: props.onAvatarRest });
+  cbRef.current = { onSelectAgent, onSfx, onAvatarRest: props.onAvatarRest };
   const latest = useRef(props);
   latest.current = props;
   const [ready, setReady] = useState(false);
@@ -39,7 +39,9 @@ export function OfficeCanvas(props: OfficeCanvasProps) {
         onSfx: (n) => cbRef.current.onSfx?.(n),
         labels: p.labels,
         reducedMotion: p.reducedMotion,
+        onAvatarRest: (pose) => cbRef.current.onAvatarRest?.(pose),
       });
+      scene.setAvatarStart(p.avatarStart ?? null);
       sceneRef.current = scene;
       scene.setFilter(p.filter);
       scene.setLive(p.live);
@@ -64,6 +66,7 @@ export function OfficeCanvas(props: OfficeCanvasProps) {
   useEffect(() => void sceneRef.current?.setReducedMotion(reducedMotion), [reducedMotion, ready]);
   useEffect(() => void sceneRef.current?.setFilter(filter), [filter, ready]);
   useEffect(() => void sceneRef.current?.setLive(live), [live, ready]);
+  useEffect(() => void sceneRef.current?.setAvatarStart(props.avatarStart ?? null), [props.avatarStart, ready]);
   useEffect(() => void sceneRef.current?.setAvatarEnabled(avatarEnabled), [avatarEnabled, ready]);
   useEffect(() => void sceneRef.current?.setSelected(selectedAgentId), [selectedAgentId, ready]);
   useEffect(() => void sceneRef.current?.setAgents(agents), [agents, ready]);

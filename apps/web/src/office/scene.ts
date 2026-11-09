@@ -69,11 +69,22 @@ class Actor {
   }
 }
 
+const ARROWS: Record<string, string> = { ArrowUp: 'w', ArrowDown: 's', ArrowLeft: 'a', ArrowRight: 'd' };
+
 export interface SceneOptions {
   onSelect: (id: string | null) => void;
   onSfx?: ((n: OfficeSfx) => void) | undefined;
   labels: OfficeLabels;
   reducedMotion: boolean;
+  /** Owner avatar stopped (or changed room): the UI persists this checkpoint. Never called per frame. */
+  onAvatarRest?: ((p: AvatarPose) => void) | undefined;
+}
+
+export interface AvatarPose {
+  room: RoomKey;
+  x: number;
+  y: number;
+  direction: 'up' | 'down' | 'left' | 'right';
 }
 
 export class OfficeScene {
@@ -98,6 +109,8 @@ export class OfficeScene {
   private roomSeatClaims = new Map<RoomKey, Map<string, Seat>>();
   private avatar: Actor | null = null;
   private avatarEnabled = false;
+  private avatarStart: AvatarPose | null = null;
+  private avatarMoving = false;
   private keys = new Set<string>();
   private destroyed = false;
   private lastActorsJson = '';
@@ -162,6 +175,20 @@ export class OfficeScene {
     this.banner.visible = !v;
     this.world.alpha = v ? 1 : 0.72;
   }
+  /** Restore the persisted resting position. Ignored if it is no longer walkable (map changed). */
+  setAvatarStart(p: AvatarPose | null): void {
+    this.avatarStart = p && walkableAt(p.x - 4, p.y - 2) && walkableAt(p.x + 4, p.y - 2) ? p : null;
+    if (this.avatar && this.avatarStart && !this.avatarMoving && !this.avatarPlaced) this.placeAvatar(this.avatarStart);
+  }
+  private avatarPlaced = false;
+  private placeAvatar(p: AvatarPose): void {
+    const a = this.avatar!;
+    a.pos = { x: p.x, y: p.y };
+    a.room = p.room;
+    a.walkFlip = p.direction === 'left';
+    a.walkDir = p.direction === 'left' || p.direction === 'right' ? 'side' : p.direction;
+    this.avatarPlaced = true;
+  }
   setAvatarEnabled(v: boolean): void {
     this.avatarEnabled = v;
     if (v && !this.avatar) {
@@ -175,6 +202,7 @@ export class OfficeScene {
       this.avatar = a;
       a.nameText.text = this.labels.you;
       this.hookClick(a);
+      if (this.avatarStart) this.placeAvatar(this.avatarStart);
     }
     if (this.avatar) {
       this.avatar.root.visible = v;
@@ -314,13 +342,13 @@ export class OfficeScene {
     const isTyping = (t: EventTarget | null) => t instanceof HTMLElement && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable);
     const down = (e: KeyboardEvent) => {
       if (!this.avatarEnabled || isTyping(e.target) || e.ctrlKey || e.metaKey || e.altKey) return;
-      const k = e.key.toLowerCase();
-      if ('wasd'.includes(k) && k.length === 1) {
+      const k = ARROWS[e.key] ?? e.key.toLowerCase();
+      if (k.length === 1 && 'wasd'.includes(k)) {
         this.keys.add(k);
         e.preventDefault();
       }
     };
-    const up = (e: KeyboardEvent) => this.keys.delete(e.key.toLowerCase());
+    const up = (e: KeyboardEvent) => this.keys.delete(ARROWS[e.key] ?? e.key.toLowerCase());
     const blur = () => this.keys.clear();
     window.addEventListener('keydown', down);
     window.addEventListener('keyup', up);
@@ -334,8 +362,8 @@ export class OfficeScene {
 
   // ------------------------------------------------------------------ textures
   private ensureAppearance(a: Actor, dto: AgentDTO): void {
-    const ap = appearanceFor({ seed: dto.appearanceSeed || dto.id, departmentKey: dto.departmentKey, departmentColor: dto.departmentColor, orgRole: dto.orgRole });
-    const key = `${dto.appearanceSeed}|${dto.departmentKey}|${dto.departmentColor}|${dto.orgRole}`;
+    const ap = appearanceFor({ seed: dto.avatarId || dto.appearanceSeed || dto.id, departmentKey: dto.departmentKey, departmentColor: dto.departmentColor, orgRole: dto.orgRole });
+    const key = `${dto.avatarId ?? ''}|${dto.appearanceSeed}|${dto.departmentKey}|${dto.departmentColor}|${dto.orgRole}`;
     if (a.appearanceKey === key) return;
     a.appearance = ap;
     a.appearanceKey = key;
@@ -424,6 +452,7 @@ export class OfficeScene {
     this.snapshotAcc += dtMs;
     if (this.snapshotAcc > 400) {
       this.snapshotAcc = 0;
+      if (this.avatar && this.avatarEnabled) this.host.dataset['avatar'] = JSON.stringify({ x: Math.round(this.avatar.pos.x), y: Math.round(this.avatar.pos.y), room: this.avatar.room, moving: this.avatarMoving, dir: this.avatar.walkDir === 'side' ? (this.avatar.walkFlip ? 'left' : 'right') : this.avatar.walkDir });
       const json = JSON.stringify(this.snapshot());
       if (json !== this.lastActorsJson) {
         this.lastActorsJson = json;
@@ -567,9 +596,14 @@ export class OfficeScene {
     }
     a.frameClock += dtMs;
     const f = Math.floor(a.frameClock / (moving ? WALK_FRAME_MS : IDLE_FRAME_MS));
-    a.sprite.texture = this.frame(a, moving ? 'walk' : 'idle', moving ? a.walkDir : 'down', f);
-    a.sprite.scale.x = a.walkFlip && moving ? -1 : 1;
-    a.sprite.x = Math.round(a.pos.x - CHAR_W / 2) + (a.walkFlip && moving ? CHAR_W : 0);
+    if (this.avatarMoving && !moving) {
+      this.updateRoomOf(a);
+      this.opts.onAvatarRest?.({ room: a.room, x: Math.round(a.pos.x), y: Math.round(a.pos.y), direction: a.walkDir === 'side' ? (a.walkFlip ? 'left' : 'right') : a.walkDir });
+    }
+    this.avatarMoving = moving;
+    a.sprite.texture = this.frame(a, moving ? 'walk' : 'idle', a.walkDir, f);
+    a.sprite.scale.x = a.walkFlip ? -1 : 1;
+    a.sprite.x = Math.round(a.pos.x - CHAR_W / 2) + (a.walkFlip ? CHAR_W : 0);
     a.sprite.y = Math.round(a.pos.y - 22);
     a.root.zIndex = a.pos.y;
     a.ring.clear().ellipse(a.pos.x, a.pos.y - 1, 8, 3).stroke({ width: 1, color: 0x57e0f0 });

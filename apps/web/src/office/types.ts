@@ -1,4 +1,5 @@
 import type { AgentDTO, AgentState, RoomKey } from '@avo/shared';
+import type { AvatarPose } from './scene.js';
 
 export type ViewFilter = 'ALL' | 'REAL' | 'SIMULATED';
 
@@ -29,6 +30,10 @@ export interface OfficeCanvasProps {
   reducedMotion: boolean;
   /** Extra feature: Owner avatar moved with WASD. */
   avatarEnabled: boolean;
+  /** Persisted resting position to restore (null = default spawn). */
+  avatarStart?: AvatarPose | null;
+  /** Fired when the avatar stops walking (checkpoint to persist). */
+  onAvatarRest?: (p: AvatarPose) => void;
   /** false => realtime connection lost; scene shows a stale overlay. */
   live: boolean;
   onSfx?: (name: OfficeSfx) => void;

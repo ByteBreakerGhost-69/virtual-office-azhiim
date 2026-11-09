@@ -26,10 +26,11 @@ export function AgentPanel({ agentId, onClose }: { agentId: string; onClose?: ()
       <header className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <h2 className="truncate text-lg font-bold" data-testid="agent-panel-name">{a.name}</h2>
-          <p className="text-sm text-ink-soft">{a.title} · @{a.handle}</p>
+          <p className="text-sm text-ink-soft">{a.title} · @{a.handle}{a.employeeCode ? <> · <span data-testid="agent-employee-code">{a.employeeCode}</span></> : null}</p>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <ModeBadge mode={a.mode} />
             <StateBadge state={a.state} stale={a.stale} testId={`agent-state-${a.id}`} />
+            {a.employmentStatus ? <Pill>{td('employment', a.employmentStatus)}</Pill> : <Pill>{t('agent.notEmployee')}</Pill>}
             {!a.enabled ? <Pill>{t('agent.disable')}d</Pill> : null}
           </div>
         </div>

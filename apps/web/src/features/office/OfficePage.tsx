@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { OfficeCanvas, type OfficeLabels, type ViewFilter } from '../../office/index.js';
 import { useAgents } from '../../lib/queries.js';
@@ -8,6 +9,13 @@ import { useAudio } from '../../audio/useAudio.js';
 import { AGENT_STATES, ROOM_KEYS, type AgentState, type RoomKey } from '@avo/shared';
 import { Button, Empty, ErrorNote, Loading, ModeBadge, PageHeader, StateBadge, PixelIcon } from '../../components/ui.js';
 import { AgentPanel } from '../agents/AgentPanel.js';
+import { TerminalPanel, type TerminalSize } from '../terminal/TerminalPanel.js';
+import { api } from '../../lib/api.js';
+import type { AvatarPose } from '../../office/scene.js';
+
+const TERM_W: Record<TerminalSize, string> = { sm: '20rem', md: '28rem', lg: '40rem' };
+const lsGet = (k: string): string | null => { try { return localStorage.getItem(k); } catch { return null; } };
+const lsSet = (k: string, v: string) => { try { localStorage.setItem(k, v); } catch { /* storage unavailable */ } };
 
 function usePrefersReducedMotion(): boolean {
   const [r, setR] = useState(() => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false);
@@ -29,7 +37,21 @@ export default function OfficePage() {
   const reduced = usePrefersReducedMotion();
   const [selected, setSelected] = useState<string | null>(null);
   const [filter, setFilter] = useState<ViewFilter>('ALL');
-  const [avatar, setAvatar] = useState(false);
+  const [termOpen, setTermOpen] = useState(() => lsGet('avo.terminal.open') !== '0');
+  const [termSize, setTermSize] = useState<TerminalSize>(() => (['sm', 'md', 'lg'] as const).find((x) => x === lsGet('avo.terminal.size')) ?? 'md');
+  useEffect(() => {
+    lsSet('avo.terminal.open', termOpen ? '1' : '0');
+  }, [termOpen]);
+  useEffect(() => {
+    lsSet('avo.terminal.size', termSize);
+  }, [termSize]);
+  const posQ = useQuery({ queryKey: ['office-position'], queryFn: () => api.get<AvatarPose | null>('/office/position'), staleTime: Infinity, retry: false });
+  const restTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const saveRest = (p: AvatarPose) => {
+    if (restTimer.current) clearTimeout(restTimer.current);
+    restTimer.current = setTimeout(() => void api.put('/office/position', p).catch(() => undefined), 250);
+  };
+  useEffect(() => () => { if (restTimer.current) clearTimeout(restTimer.current); }, []);
   const [table, setTable] = useState(false);
 
   const labels = useMemo<OfficeLabels>(
@@ -67,9 +89,7 @@ export default function OfficePage() {
                 <Button key={f} size="sm" aria-pressed={filter === f} variant={filter === f ? 'primary' : 'secondary'} data-testid={`filter-${f}`} onClick={() => setFilter(f)}>{t(`filter.${f}`)}</Button>
               ))}
             </div>
-            <label className="flex items-center gap-1 text-xs font-bold" title={t('office.avatarHelp')}>
-              <input type="checkbox" checked={avatar} onChange={(e) => setAvatar(e.target.checked)} data-testid="toggle-avatar" /> {t('office.avatar')}
-            </label>
+            <Button size="sm" aria-pressed={termOpen} data-testid="toggle-terminal" onClick={() => setTermOpen((v) => !v)}>{t('terminal.title')}</Button>
             <Button size="sm" aria-pressed={table} data-testid="toggle-table" onClick={() => setTable((v) => !v)}>{table ? t('office.map') : t('office.table')}</Button>
           </>
         }
@@ -78,7 +98,7 @@ export default function OfficePage() {
       {list.length === 0 ? (
         <Empty title={t('office.empty')} help={t('office.emptyHelp')} action={<Link to="/integrations" className="font-bold text-accent underline">{t('overview.goIntegrations')}</Link>} />
       ) : (
-        <div className="grid min-h-0 flex-1 gap-3 lg:grid-cols-[minmax(0,1fr)_22rem]">
+        <div className="grid min-h-0 flex-1 gap-3 lg:[grid-template-columns:minmax(0,1fr)_var(--side-w)]" style={{ ['--side-w' as string]: termOpen ? TERM_W[termSize] : '22rem' }}>
           <div className="flex min-h-[22rem] min-w-0 flex-col gap-2">
             {table ? (
               <table className="avo-table pixel-box" data-testid="office-table">
@@ -96,7 +116,7 @@ export default function OfficePage() {
               </table>
             ) : (
               <div className="pixel-box relative min-h-0 flex-1 overflow-hidden bg-night p-0" style={{ minHeight: '22rem' }}>
-                <OfficeCanvas
+                {posQ.isFetched ? <OfficeCanvas
                   className="absolute inset-0"
                   agents={list}
                   selectedAgentId={selected}
@@ -104,10 +124,12 @@ export default function OfficePage() {
                   filter={filter}
                   labels={labels}
                   reducedMotion={reduced}
-                  avatarEnabled={avatar}
+                  avatarEnabled
+                  avatarStart={posQ.data ?? null}
+                  onAvatarRest={saveRest}
                   live={live}
                   onSfx={(n) => audio.play(n)}
-                />
+                /> : <Loading />}
               </div>
             )}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-soft">
@@ -115,11 +137,14 @@ export default function OfficePage() {
               <span className="inline-flex items-center gap-1"><PixelIcon name="sim" size={10} color="#b8812a" />{t('office.legendSim')}</span>
               <span>{t('office.notAMock')}</span>
               {reduced ? <span>{t('office.reducedMotion')}</span> : null}
-              {avatar ? <span>{t('office.avatarHelp')}</span> : null}
+              <span>{t('office.avatarHelp')}</span>
             </div>
           </div>
-          <div className="min-h-0 overflow-auto">
-            {selected ? <AgentPanel agentId={selected} onClose={() => setSelected(null)} /> : <p className="pixel-box p-4 text-sm text-ink-soft" data-testid="agent-panel-hint">{t('office.agentList')}: {shown.length}</p>}
+          <div className="flex min-h-0 flex-col gap-3">
+            {termOpen ? <div className="min-h-[16rem] flex-1"><TerminalPanel size={termSize} onSize={setTermSize} onHide={() => setTermOpen(false)} /></div> : null}
+            <div className={`min-h-0 overflow-auto ${termOpen && selected ? 'max-h-[45%]' : 'flex-1'}`}>
+              {selected ? <AgentPanel agentId={selected} onClose={() => setSelected(null)} /> : termOpen ? null : <p className="pixel-box p-4 text-sm text-ink-soft" data-testid="agent-panel-hint">{t('office.agentList')}: {shown.length}</p>}
+            </div>
           </div>
         </div>
       )}

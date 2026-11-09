@@ -6,6 +6,9 @@ Nothing is faked: if a runtime goes silent, the character is dimmed and shown as
 
 > **Ringkasan (ID):** `docker compose up -d db` → salin `.env.example` ke `.env` (isi `APP_ENCRYPTION_KEY`) → `npm install` → `npm run db:migrate` → `npm run dev` → buka http://localhost:5173, buat akun Owner. Tim demo **SIMULASI** (berlabel jelas, terpisah dari agen nyata) ada di *Integrasi*. Bahasa Indonesia/English lewat pemilih bahasa.
 
+
+> **Azhiim Virtual Company (in progress):** the audit, Milestone 1 status and the Company Terminal are documented in `docs/virtual-company/`.
+
 ## What works today (v0.1)
 The thin end-to-end slice: **register an agent → create and assign a task → the runtime runs it → status changes come from runtime events → visible in the pixel office** (REAL via the Hermes adapter, or SIMULATED via the scripted runtime).
 

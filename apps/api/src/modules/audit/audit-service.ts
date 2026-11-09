@@ -3,10 +3,11 @@ import { newId } from '../../lib/util.js';
 
 export class AuditService {
   constructor(private readonly db: Db) {}
-  async log(e: { workspaceId?: string | null; actorUserId?: string | null; action: string; entity?: string; entityId?: string; traceId?: string; ip?: string; details?: Record<string, unknown> }): Promise<void> {
+  async log(e: { workspaceId?: string | null; actorUserId?: string | null; action: string; entity?: string; entityId?: string; traceId?: string; ip?: string; details?: Record<string, unknown> }): Promise<string> {
+    const id = newId();
     await this.db.auditLog.create({
       data: {
-        id: newId(),
+        id,
         workspaceId: e.workspaceId ?? null,
         actorUserId: e.actorUserId ?? null,
         action: e.action,
@@ -17,5 +18,6 @@ export class AuditService {
         details: (e.details ?? {}) as Prisma.InputJsonValue,
       },
     });
+    return id;
   }
 }
